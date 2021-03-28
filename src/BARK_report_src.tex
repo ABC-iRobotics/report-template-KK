@@ -1,0 +1,181 @@
+% Copyright József Kuti, 2016 (GNU Public License)
+%
+% This template is created for members of Antal Bejczy Centre for Intelligent Robotics.
+% It is implemented EFOP project reports and similar shits.
+%
+% This file may be distributed and/or modified only
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+% Version: 0.02
+% Date: 19/06/2018
+
+% % % % %
+
+\usepackage{float}
+\usepackage{array}
+\usepackage{t1enc}
+\usepackage[utf8]{inputenc}
+\usepackage[hyphens]{url}
+\usepackage[unicode=true]{hyperref}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{subcaption} % todo which one should be used??
+%\usepackage{subfig} %
+\usepackage{newcent}
+\usepackage[Bjornstrup]{fncychap}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{ifpdf}
+\usepackage{hyphenat}
+\ifpdf %if using pdfLaTeX in PDF mode
+\usepackage[pdftex]{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg,.mps}
+\usepackage{pgf}
+\usepackage{tikz}
+\else %if using LaTeX or pdfLaTeX in DVI mode
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.eps,.bmp}
+\DeclareGraphicsRule{.emf}{bmp}{}{}% declare EMF filename extension
+\DeclareGraphicsRule{.png}{bmp}{}{}% declare PNG filename extension
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{pstricks}
+\fi
+
+\usepackage{epic,bez123}
+\usepackage{floatflt}% package for floatingfigure environment
+\usepackage{wrapfig}% package for wrapfigure environment
+\usepackage{makeidx}
+
+\theoremstyle{remark}
+
+\makeindex
+\bibliographystyle{ieeetr}
+
+\newcommand{\makepreamble}{
+\maketitle
+\tableofcontents
+\clearpage
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+\newpage
+\pagestyle{fancy}
+\renewcommand{\chaptername}{}
+\renewcommand{\chaptermark}[1]{\markboth{\bf{\thechapter.\  ##1}}{}}
+\fancyfoot{}
+\fancyhead[LO]{\thepage}
+\setcounter{footnote}{0}
+}
+
+\newcommand{\getcheckedby}{}
+\newcommand{\checkedby}[1]{\renewcommand{\getcheckedby}{#1}}
+
+\newcommand{\getackedby}{}
+\newcommand{\ackedby}[1]{\renewcommand{\getackedby}{#1}}
+
+\newcommand{\getperiodofperformance}{}
+\newcommand{\periodofperformance}[1]{\renewcommand{\getperiodofperformance}{#1}}
+
+\newcommand{\gettendertitle}{}
+\newcommand{\tendertitle}[1]{\renewcommand{\gettendertitle}{#1}}
+
+\newcommand{\gettasknumber}{}
+\newcommand{\tasknumber}[1]{\renewcommand{\gettasknumber}{#1}}
+
+% % %
+
+\newenvironment{changemargin}[2]{%
+    \begin{list}{}{%
+            \setlength{\topsep}{0pt}%
+            \setlength{\leftmargin}{#1}%
+            \setlength{\rightmargin}{#2}%
+            \setlength{\listparindent}{\parindent}%
+            \setlength{\itemindent}{\parindent}%
+            \setlength{\parsep}{\parskip}%
+        }%
+        \item[]}{\end{list}}
+    
+\makeatletter
+\renewcommand{\maketitle}{
+    
+    \begin{titlepage}
+        \vspace*{-4.2cm}        
+        \hspace*{-3.2cm}
+        \begin{minipage}{0.4\paperwidth}
+            \includegraphics*[height = 2 cm]{src/oe_kek} 
+        \end{minipage}
+        \begin{minipage}{0.5\paperwidth}
+            \vspace{0.7cm}
+            \begin{flushright}
+                {\small \gettendertitle}
+            \end{flushright}
+        \end{minipage}
+        
+        \vspace{0.3cm}
+        \hspace{-3.2cm}
+        \rule{19.1cm}{0.4pt}
+        \begin{center}
+	
+	
+	\vspace*{2.5cm}
+	{\Large\@title\\}
+	\vspace{1.5cm}
+	{\large\itshape Teljesítési dokumentáció\par}
+	
+	\vspace{3.5cm}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|m{4.5cm}|m{8.3cm}|}
+			
+			\hline\vspace{5pt}
+			
+			\large{FELADAT \par SORSZÁMA:} & 
+			\vspace{5pt}\large{\gettasknumber} \\ 
+			\hline\vspace{5pt}
+			
+			\large{KÉSZÍTETTE:} & 
+			\vspace{5pt}\large{\@author} \\ 
+			\hline\vspace{5pt}
+			
+			\large{ELLENŐRIZTE:} & 
+			\vspace{5pt}\large{\getcheckedby}\\
+			\hline\vspace{5pt}
+			
+			\large{TELJESÍTÉSI IDŐSZAK:}    & 
+			\vspace{5pt}\large{\getperiodofperformance} \\
+			\hline
+			
+		\end{tabular}
+	\end{table}
+	
+	
+	\end{center}
+        \begin{changemargin}{0.7cm}{0.7cm}	% So the image can go to the edge of the page
+            \enlargethispage{4.4cm}	% So the image can go to the edge of the page
+            
+            \vfill
+            \begin{minipage}{\paperwidth}
+                
+                \hspace*{7.3cm}		% Align image here, if necessary!
+                \includegraphics*[height = 4 cm]{src/infoblokk_jo} 
+            \end{minipage} 
+        \end{changemargin}
+    \end{titlepage}  
+}
+\makeatother	% must be outside renewcommand
+
+% % % % %
+
+\usepackage{pdfpages}
+\usepackage{caption}
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+
